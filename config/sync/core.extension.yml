@@ -89,7 +89,7 @@ module:
   search_api_solr: 0
   seckit: 0
   select2: 0
-  server_style_guide: 0
+  server_general: 0
   shortcut: 0
   simple_sitemap: 0
   smart_trim: 0
@@ -112,7 +112,6 @@ module:
   pathauto: 1
   content_translation: 10
   password_policy: 10
-  server_general: 10
   views: 10
   paragraphs: 11
   server: 1000
