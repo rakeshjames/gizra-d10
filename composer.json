@@ -118,7 +118,9 @@
         "symfony/browser-kit": "^6.3",
         "symfony/phpunit-bridge": "^5.0",
         "totten/lurkerlite": "^1",
-        "weitzman/drupal-test-traits": "^2"
+        "weitzman/drupal-test-traits": "^2",
+        "drupal/core-dev": "^10.0",
+        "symfony/phpunit-bridge": "^6.0"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -181,7 +183,7 @@
             "include-keys": ["homepage", "support"],
             "post-create-project-cmd-message": [
                 "<bg=blue;fg=white>                                                         </>",
-                "<bg=blue;fg=white>  Congratulations, you’ve installed the Drupal codebase  </>",
+                "<bg=blue;fg=white>  Congratulations, you've installed the Drupal codebase  </>",
                 "<bg=blue;fg=white>  from the drupal/recommended-project template!          </>",
                 "<bg=blue;fg=white>                                                         </>",
                 "",
@@ -199,5 +201,9 @@
     },
     "replace": {
         "drupal/ctools": "*"
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:existing-site": "phpunit --testsuite=existing-site"
     }
 }

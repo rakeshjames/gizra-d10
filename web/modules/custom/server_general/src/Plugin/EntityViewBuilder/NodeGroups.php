@@ -41,9 +41,8 @@ class NodeGroups extends NodeViewBuilderAbstract {
     if ($this->currentUser->isAuthenticated()) {
       $is_member = Og::isMember($entity, $this->currentUser);
       $can_subscribe = Og::isGroup($entity->getEntityTypeId(), $entity->bundle());
-
+      $user = $this->entityTypeManager->getStorage('user')->load($this->currentUser->id());
       if (!$is_member && $can_subscribe) {
-        $user = $this->entityTypeManager->getStorage('user')->load($this->currentUser->id());
         $subscribe_url = Url::fromRoute('og.subscribe', [
           'entity_type_id' => 'node',
           'group' => $entity->id(),
@@ -55,6 +54,13 @@ class NodeGroups extends NodeViewBuilderAbstract {
             '@name' => $user->getDisplayName(),
             '@url' => $subscribe_url->toString(),
             '@label' => $entity->label(),
+          ]),
+        ]);
+      }
+      else if ($is_member) {
+        $elements[] = $this->wrapContainerWide([
+          '#markup' => $this->t('Hi @name, you are already a member of this group.', [
+            '@name' => $user->getDisplayName(),
           ]),
         ]);
       }
