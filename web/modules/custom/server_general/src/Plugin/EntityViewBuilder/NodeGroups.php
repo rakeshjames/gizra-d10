@@ -28,13 +28,6 @@ class NodeGroups extends NodeViewBuilderAbstract {
   public function buildFull(array $build, NodeInterface $entity) {
     $elements = [];
 
-    // Add title.
-    $elements[] = $this->wrapContainerWide([
-      '#type' => 'html_tag',
-      '#tag' => 'h1',
-      '#value' => $entity->label(),
-    ]);
-
     // Add body if it exists.
     if ($entity->hasField('body') && !$entity->get('body')->isEmpty()) {
       $elements[] = $this->wrapContainerWide([
