@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
+         bootstrap="web/core/tests/bootstrap.php"
+         colors="true"
+         beStrictAboutTestsThatDoNotTestAnything="true"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutTestSize="true"
+         beStrictAboutTodoAnnotatedTests="true"
+         convertDeprecationsToExceptions="true">
+    <testsuites>
+        <testsuite name="existing-site">
+            <directory>web/modules/custom/*/tests/src/ExistingSite</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <env name="SIMPLETEST_BASE_URL" value="http://localhost"/>
+        <env name="SIMPLETEST_DB" value="mysql://root:root@localhost/drupal"/>
+        <env name="BROWSERTEST_OUTPUT_DIRECTORY" value="/tmp"/>
+        <env name="MINK_DRIVER_ARGS_WEBDRIVER" value='["chrome", {"browserName":"chrome","chromeOptions":{"args":["--disable-gpu","--headless", "--no-sandbox"]}}, "http://localhost:4444/wd/hub"]'/>
+        <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak"/>
+    </php>
+    <listeners>
+        <listener class="\Symfony\Bridge\PhpUnit\SymfonyTestsListener"/>
+    </listeners>
+</phpunit>
