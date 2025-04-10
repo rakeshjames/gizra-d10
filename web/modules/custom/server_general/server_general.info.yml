@@ -1,8 +1,20 @@
-name: "Server General"
+name: Server General
 type: module
-description: "General and common functionality"
+description: 'Custom functionality for the server.'
+package: Custom
 core_version_requirement: ^9 || ^10
-package: "server"
 dependencies:
   - drupal:node
-  - drupal:og
+  - drupal:views
+  - og:og
+  - og:og_ui
+
+# Register templates
+theme:
+  person_card:
+    variables:
+      name: null
+      role: null
+      description: null
+      image: null
+      social_links: []
